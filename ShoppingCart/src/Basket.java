@@ -1,4 +1,3 @@
-import java.io.ObjectInputStream.GetField;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,8 +21,6 @@ public class Basket {
 
 		int quantity;
 
-	
-
 		Scanner scan = new Scanner(System.in);
 
 		String keepShopping = "y";
@@ -44,24 +41,20 @@ public class Basket {
 
 			quantity = scan.nextInt();
 
-			
 			// *** create a new item and add it to the cart
 
 			item = new Item(itemName, itemPrice, quantity);
 
-			price = getPriceofFruit(item) ;
+			price = getPriceofFruit(item);
 
-			  
 			NumberFormat format = NumberFormat.getCurrencyInstance();
 
 			System.out.println("The price is: " + format.format(price));
 
-			
 			addItem(item);
 
 			// *** print the contents of the cart object using println
 
-			
 			System.out.print("Continue shopping (y/n)? ");
 
 			scan.nextLine();
@@ -69,12 +62,11 @@ public class Basket {
 			keepShopping = scan.nextLine();
 
 		} while (keepShopping.equals("y"));
-		
+
 		totalPrice = getTotalBasketValue();
 		NumberFormat fmt = NumberFormat.getCurrencyInstance();
 
 		System.out.println("The total price  of all fruits in basket is: " + fmt.format(totalPrice));
-
 
 	}
 
@@ -91,13 +83,12 @@ public class Basket {
 		Cart.remove(itm);
 
 	}
-	
+
 	public static double getPriceofFruit(Item itm) {
-		
-	price=(	itm.getPrice())*(itm.getQuantity());
+
+		price = (itm.getPrice()) * (itm.getQuantity());
 		return price;
 	}
-
 
 	public static double getTotalBasketValue() {
 		if (Cart.size() > 0) {
@@ -111,8 +102,4 @@ public class Basket {
 		return totalPrice;
 	}
 
-	public void remove(Item itm) {
-		Cart.remove(itm);
-
-	}
 }
